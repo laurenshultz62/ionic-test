@@ -21,7 +21,8 @@ import {
   } from '@ionic/react';
 
 const Login = ({
-    setIsAuthenticated
+    setIsAuthenticated,
+    authenticateSignin
 }) => {
 
     const [email, setEmail] = React.useState("");
@@ -45,7 +46,7 @@ const Login = ({
                     <IonInput type="password" placeholder="Password" onInput={(event) => setPassword(event.target.value)}></IonInput>
               </IonItem>
           </IonList>
-          <IonButton className="loginButton" onClick={() => setIsAuthenticated(true)}>Login</IonButton>
+          <IonButton className="loginButton" onClick={() => authenticateSignin(email, password)}>Login</IonButton>
       </IonContent>
     </IonPage>
     )

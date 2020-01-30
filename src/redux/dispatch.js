@@ -19,6 +19,7 @@ const mapDispatchToProps = dispatch => {
               last_name: "User",
               email
             }))
+            // Android, iOS save returned auth token locally
             dispatch(setLoading(false))
         })
         .catch(function (error) {

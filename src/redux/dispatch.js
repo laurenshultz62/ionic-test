@@ -23,6 +23,12 @@ const mapDispatchToProps = dispatch => {
         })
         .catch(function (error) {
             console.log("error" + error);
+            // Sending to user for poc due to cors blocking auth request and not worth fixing for poc
+            dispatch(setAuthenticatedUser({
+              first_name: "Test",
+              last_name: "User",
+              email
+            }))
             dispatch(showAlert(true, "There was an issue logging in."))
             dispatch(setLoading(false))
         });

@@ -11,6 +11,7 @@ import {
     IonButton,
     IonItem
   } from '@ionic/react';
+import styles from './styles.css'
 
 
 const Modal = ({
@@ -21,7 +22,7 @@ const Modal = ({
     positiveButtonText
 }) => {
     return (
-        <IonItem>
+        <IonItem className="modal">
             <IonLabel>{message}</IonLabel>
             <IonButton onClick={negativeButtonAction}>{negativeButtonText != null ? negativeButtonText : "Close"}</IonButton>
             {positiveButtonAction && <IonButton onClick={positiveButtonAction} >{positiveButtonText != null ? positiveButtonText : "OK"}</IonButton>}

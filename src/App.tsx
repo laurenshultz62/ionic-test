@@ -10,11 +10,12 @@ import {
   IonTabs
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { apps, flash, send } from 'ionicons/icons';
-import Tab1 from './pages/Tab1';
+import { apps, flash, send, images, home, contacts, hand } from 'ionicons/icons';
+import Tab1 from './pages/Home';
 import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
 import Details from './pages/Details';
+import Login from './pages/Login';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -35,8 +36,32 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
-const App: React.FC = () => (
-  <IonApp>
+const App: React.FC = () => {
+
+  const [isAuthenticated, setIsAuthenticated] = React.useState(false)
+  const [selectedTerminal, setSelectedTerminal] = React.useState({})
+
+  // setSelectedTerminal({
+  //   name: "Terminal A",
+  //   description: "This is terminal a description",
+  //   imageURL: "",
+  //   trucks: [
+  //     {number: "truck 1"}, 
+  //     {number: "truck 2"}, 
+  //     {number: "truck 3"}
+  //   ]
+  // })
+
+  const renderLogin = () => {
+      return (
+        <Login {...{
+          setIsAuthenticated
+        }}></Login>
+      )
+  }
+
+  const renderApp = () => {
+    return (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
@@ -48,21 +73,35 @@ const App: React.FC = () => (
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="tab1" href="/tab1">
-            <IonIcon icon={flash} />
-            <IonLabel>Tab One</IonLabel>
+            <IonIcon icon={home} />
+            <IonLabel>Home</IonLabel>
           </IonTabButton>
           <IonTabButton tab="tab2" href="/tab2">
-            <IonIcon icon={apps} />
-            <IonLabel>Tab Two</IonLabel>
+            <IonIcon icon={images} />
+            <IonLabel>Photos</IonLabel>
           </IonTabButton>
           <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon icon={send} />
-            <IonLabel>Tab Three</IonLabel>
+            <IonIcon icon={hand} />
+            <IonLabel>Inspections</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="tab4" href="/tab3">
+            <IonIcon icon={contacts} />
+            <IonLabel>Contacts</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>
     </IonReactRouter>
+    )
+  }
+
+  return(
+  <IonApp>
+    {isAuthenticated 
+      ? renderApp()
+      : renderLogin()
+    }
   </IonApp>
-);
+)
+};
 
 export default App;

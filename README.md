@@ -1,7 +1,8 @@
 # ionic-test
 
 Clone
-`git clone `
+`git clone https://github.com/laurenshultz62/ionic-test.git`
+
 `cd ionic-test`
 
 Install Ionic

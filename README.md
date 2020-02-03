@@ -11,12 +11,18 @@ Install Ionic
 Install Packages
 `yarn install`
 
+### Start Ionic
 Start Ionic Web
 `ionic serve`
+
+Opens in browser
 
 Start Ionic iOS
 `ionic cap run ios -l --external`
 
-Start Ionic
+Build on emultor
+
+Start Ionic Android
 `ionic cap run android -l --external`
+Build on emulator
 
